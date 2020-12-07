@@ -1,0 +1,42 @@
+name:                riot
+version:             0.1.0.0
+github:              "Tiltimus/riot-api"
+license:             BSD3
+author:              "Warrick Pardoe"
+maintainer:          "warrick.pardoe2@hotmail.co.uk"
+copyright:           "2020 Warrick Pardoe"
+
+extra-source-files:
+- README.md
+
+description:         Please see the README on GitHub at <https://github.com/Tiltimus/riot-api#readme>
+
+dependencies:
+- base >= 4.7 && < 5
+- text
+- wreq
+- lens
+- mtl
+- aeson
+- generic-lens
+- http-client
+- http-types
+- containers
+- hspec
+- time
+- HUnit
+- hspec-core
+
+library:
+  source-dirs: src
+
+tests:
+  riot-test:
+    main:                Spec.hs
+    source-dirs:         test
+    ghc-options:
+    - -threaded
+    - -rtsopts
+    - -with-rtsopts=-N
+    dependencies:
+    - riot
