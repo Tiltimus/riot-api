@@ -27,8 +27,7 @@ import           Web.Riot.Loggit
 
 data State
   = State
-  { rate :: Float
-  , count :: Int
+  { count :: Int
   , startTime :: UTCTime
   , lastExecuted :: UTCTime
   , session :: Session
@@ -75,7 +74,7 @@ createState :: IO State
 createState = do
   session <- newAPISession
   time    <- getCurrentTime
-  return $ State 0 0 time time session 0
+  return $ State 0 time time session 0
 
 execRiotT' :: Config -> RiotT a -> IO (Config, State, Either RiotException a)
 execRiotT' config rx = do
@@ -110,10 +109,6 @@ getVersion =
 getLimiter :: RiotT Limiter
 getLimiter =
   RiotT $ \config state -> return (config, state, Right $ config ^. #rateLimit)
-
-getRate :: RiotT Float
-getRate =
-  RiotT $ \config state -> return (config, state, Right $ state ^. #rate)
 
 getCount :: RiotT Int
 getCount =

@@ -4,16 +4,16 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: f2f4e0b941558d568b936b62cc3594fa3f8a87e08838cf22c4d095a5311e6c96
+-- hash: fb9c405f0e1010d19738e43c733a097702e89096a04a360fb0eb8746b803885d
 
 name:           riot
 version:        0.1.0.0
-description:    Please see the README on GitHub at <https://github.com/githubuser/importer#readme>
-homepage:       https://github.com/githubuser/importer#readme
-bug-reports:    https://github.com/githubuser/importer/issues
-author:         Author name here
-maintainer:     example@example.com
-copyright:      2020 Author name here
+description:    Please see the README on GitHub at <https://github.com/Tiltimus/riot-api#readme>
+homepage:       https://github.com/Tiltimus/riot-api#readme
+bug-reports:    https://github.com/Tiltimus/riot-api/issues
+author:         Warrick Pardoe
+maintainer:     warrick.pardoe2@hotmail.co.uk
+copyright:      2020 Warrick Pardoe
 license:        BSD3
 license-file:   LICENSE
 build-type:     Simple
@@ -22,7 +22,7 @@ extra-source-files:
 
 source-repository head
   type: git
-  location: https://github.com/githubuser/importer
+  location: https://github.com/Tiltimus/riot-api
 
 library
   exposed-modules:
@@ -32,7 +32,6 @@ library
       Web.Riot.Locale
       Web.Riot.Loggit
       Web.Riot.LOL
-      Web.Riot.LOL.Account
       Web.Riot.LOL.ChampionMastery
       Web.Riot.LOL.ChampionRotation
       Web.Riot.LOL.Clash.ClashPlayer
@@ -67,6 +66,7 @@ library
       Web.Riot.LOL.PlatformData.Content
       Web.Riot.LOL.PlatformData.Status
       Web.Riot.LOL.PlatformData.Update
+      Web.Riot.LOL.QueueType
       Web.Riot.LOL.Static
       Web.Riot.LOL.Static.Champions
       Web.Riot.LOL.Static.Champions.Champion
@@ -85,9 +85,13 @@ library
       Web.Riot.LOL.Static.Season
       Web.Riot.LOL.Static.Spell
       Web.Riot.LOL.Summoner
+      Web.Riot.LOL.Tier
       Web.Riot.LOL.Types
       Web.Riot.Platform
       Web.Riot.Request
+      Web.Riot.RIOT
+      Web.Riot.RIOT.Account
+      Web.Riot.RIOT.Types
       Web.Riot.RiotException
       Web.Riot.RiotT
   other-modules:
@@ -115,6 +119,7 @@ test-suite riot-test
   type: exitcode-stdio-1.0
   main-is: Spec.hs
   other-modules:
+      LOL
       Paths_riot
   hs-source-dirs:
       test

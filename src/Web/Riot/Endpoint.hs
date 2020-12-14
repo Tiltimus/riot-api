@@ -9,6 +9,8 @@ import           Data.Text.Encoding
 import           Network.Wreq
 import           Web.Riot.Platform
 import           Web.Riot.Locale
+import           Web.Riot.LOL.QueueType
+import           Web.Riot.LOL.Tier
 import           Prelude                 hiding ( concat )
 
 hostname :: Platform -> Text
@@ -38,7 +40,7 @@ data Endpoint
   -- Leagues
   | GET_ALL_CHALLENGER_LEAGUES    Text
   | GET_ENTRIES_BY_SUMMONER       Text
-  | GET_ENTRIES_BY_QUEUE_TIER_DIV Text Text Text (Maybe Int)
+  | GET_ENTRIES_BY_QUEUE_TIER_DIV QueueType Division Tier  (Maybe Int)
   | GET_ALL_GRANDMASTER_LEAGUES   Text
   | GET_LEAGUE_BY_LEAGUE_ID       Text
   | GET_ALL_MASTER_LEAGUES        Text
@@ -148,15 +150,15 @@ endpointToUrlAndOptions endpoint apikey platform = case endpoint of
     ( concat [hostname platform, "/lol/league/v4/entries/by-summoner/", id]
     , withKey
     )
-  (GET_ENTRIES_BY_QUEUE_TIER_DIV queue tier division page) ->
+  (GET_ENTRIES_BY_QUEUE_TIER_DIV queue division tier page) ->
     ( concat
       [ hostname platform
       , "/lol/league/v4/entries/"
-      , queue
+      , pack $ show queue
       , "/"
-      , tier
+      , pack $ show tier
       , "/"
-      , division
+      , pack $ show division
       ]
     , withKey & param "page" .~ [fromMaybe "" (page >>= (Just . pack . show))]
     )

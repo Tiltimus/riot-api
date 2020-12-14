@@ -4,7 +4,7 @@
 {-# LANGUAGE ScopedTypeVariables   #-}
 {-# LANGUAGE DuplicateRecordFields #-}
 
-module Web.Riot.LOL.Account where
+module Web.Riot.RIOT.Account where
 
 import           Data.Text
 import           Data.Aeson

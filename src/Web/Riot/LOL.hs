@@ -13,9 +13,6 @@
 
 module Web.Riot.LOL
   ( module Web.Riot.LOL.Types
-  , getAccountByPuuid
-  , getAccountByTagLine
-  , getAccountByGame
   , getMasteryBySummonerId
   , getMasteryByIdWithChampionId
   , getMasteryScoreById
@@ -65,18 +62,6 @@ import           Web.Riot.Request
 import           Web.Riot.Endpoint
 import           Web.Riot.Config
 
--- Account
-
-getAccountByPuuid :: Text -> RiotT Account
-getAccountByPuuid puuid = request $ GET_ACCOUNT_BY_PUUID puuid
-
-getAccountByTagLine :: Text -> Text -> RiotT Account
-getAccountByTagLine gameName tagLine =
-  request $ GET_ACCOUNT_BY_TAGLINE gameName tagLine
-
-getAccountByGame :: Text -> Text -> RiotT Account
-getAccountByGame game puuid = request $ GET_ACCOUNT_BY_GAME game puuid
-
 -- Champion Mastery
 
 getMasteryBySummonerId :: Text -> RiotT [ChampionMastery]
@@ -119,9 +104,9 @@ getChallengerLeagues queue = request $ GET_ALL_CHALLENGER_LEAGUES queue
 getLeagueEntriesBySummoner :: Text -> RiotT LeagueEntries
 getLeagueEntriesBySummoner id = request $ GET_ENTRIES_BY_SUMMONER id
 
-getLeagueEntries :: Text -> Text -> Text -> Maybe Int -> RiotT LeagueEntries
-getLeagueEntries queue tier division page =
-  request $ GET_ENTRIES_BY_QUEUE_TIER_DIV queue tier division page
+getLeagueEntries :: QueueType -> Division -> Tier -> Maybe Int -> RiotT LeagueEntries
+getLeagueEntries queue division tier  page =
+  request $ GET_ENTRIES_BY_QUEUE_TIER_DIV queue division tier page
 
 getGrandMasterLeagues :: Text -> RiotT LeagueList
 getGrandMasterLeagues queue = request $ GET_ALL_GRANDMASTER_LEAGUES queue

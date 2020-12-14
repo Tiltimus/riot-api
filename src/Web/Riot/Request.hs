@@ -29,7 +29,7 @@ request endpoint = throttle $ do
   time    <- liftIO getCurrentTime
   case result of
     Left error -> do
-      loggit $ Loggit url time "Failed request." options
+      loggit $ Loggit url time (pack $ show error) options
       setError $ handleHttpException error
     Right response -> case eitherDecode $ response ^. Wreq.responseBody of
       Left message -> do

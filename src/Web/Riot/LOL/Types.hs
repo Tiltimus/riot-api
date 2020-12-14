@@ -5,7 +5,6 @@ module Web.Riot.LOL.Types
   , module Web.Riot.LOL.Match
   , module Web.Riot.LOL.MatchReference
   , module Web.Riot.LOL.MatchTimeline
-  , module Web.Riot.LOL.Account
   , module Web.Riot.LOL.ChampionMastery
   , module Web.Riot.LOL.ChampionRotation
   , module Web.Riot.LOL.Clash.ClashPlayer
@@ -23,6 +22,8 @@ module Web.Riot.LOL.Types
   , module Web.Riot.LOL.CurrentGameInfo.Observer
   , module Web.Riot.LOL.FeaturedGames
   , module Web.Riot.LOL.Static
+  , module Web.Riot.LOL.QueueType
+  , module Web.Riot.LOL.Tier
   )
 where
 
@@ -30,7 +31,6 @@ import           Web.Riot.LOL.Summoner
 import           Web.Riot.LOL.Match
 import           Web.Riot.LOL.MatchReference
 import           Web.Riot.LOL.MatchTimeline
-import           Web.Riot.LOL.Account
 import           Web.Riot.LOL.ChampionMastery
 import           Web.Riot.LOL.ChampionRotation
 import           Web.Riot.LOL.Clash.ClashPlayer
@@ -48,3 +48,5 @@ import           Web.Riot.LOL.CurrentGameInfo.Perks
 import           Web.Riot.LOL.CurrentGameInfo.Observer
 import           Web.Riot.LOL.FeaturedGames
 import           Web.Riot.LOL.Static
+import           Web.Riot.LOL.QueueType
+import           Web.Riot.LOL.Tier
