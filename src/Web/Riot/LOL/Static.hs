@@ -1,3 +1,6 @@
+{-# LANGUAGE ScopedTypeVariables   #-}
+{-# LANGUAGE DuplicateRecordFields #-}
+
 module Web.Riot.LOL.Static
   ( module Web.Riot.LOL.Static.Season
   , module Web.Riot.LOL.Static.Queue
