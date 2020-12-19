@@ -3,6 +3,7 @@
 {-# LANGUAGE RecordWildCards       #-}
 {-# LANGUAGE ScopedTypeVariables   #-}
 {-# LANGUAGE DuplicateRecordFields #-}
+{-# LANGUAGE LambdaCase            #-}
 
 module Web.Riot.LOL.Match.Team where
 
@@ -11,6 +12,18 @@ import           Data.Aeson
 import           Data.Text
 import           GHC.Generics
 import           Web.Riot.LOL.Match.Bans
+
+data Win = Fail | Win deriving (Show, Eq) 
+
+instance FromJSON Win where
+  parseJSON = withText "win" (\case
+    "Fail" -> return Fail
+    "Win" -> return Win
+    _ -> fail "Invalid win value type.")
+
+instance ToJSON Win where
+  toJSON Fail = "Fail"
+  toJSON Win  = "Win"
 
 data Team = Team
   { towerKills           :: Int
@@ -25,7 +38,7 @@ data Team = Team
   , vilemawKills         :: Int
   , inhibitorKills       :: Int
   , firstRiftHerald      :: Bool
-  , win                  :: Text
+  , win                  :: Win
   , firstBlood           :: Bool
   , firstInhibitor       :: Bool
   , baronKills           :: Int
