@@ -334,3 +334,9 @@ staticDataTests config = describe "Riot LOL static data calls." $ do
     case value of
       Left  _  -> assertFailure "Failed to get profile icons."
       Right a -> return ()
+
+  it "Returns all the runes." $ do
+    value <- execRiotT config getRunes
+    case value of
+      Left  _  -> assertFailure "Failed to get runes icons."
+      Right a -> return ()

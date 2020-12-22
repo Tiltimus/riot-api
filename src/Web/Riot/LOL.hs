@@ -50,6 +50,7 @@ module Web.Riot.LOL
   , getSpells
   , getProfileIcons
   , getChampionByName
+  , getRunes
   )
 where
 
@@ -104,8 +105,9 @@ getChallengerLeagues queue = request $ GET_ALL_CHALLENGER_LEAGUES queue
 getLeagueEntriesBySummoner :: Text -> RiotT LeagueEntries
 getLeagueEntriesBySummoner id = request $ GET_ENTRIES_BY_SUMMONER id
 
-getLeagueEntries :: QueueType -> Division -> Tier -> Maybe Int -> RiotT LeagueEntries
-getLeagueEntries queue division tier  page =
+getLeagueEntries
+  :: QueueType -> Division -> Tier -> Maybe Int -> RiotT LeagueEntries
+getLeagueEntries queue division tier page =
   request $ GET_ENTRIES_BY_QUEUE_TIER_DIV queue division tier page
 
 getGrandMasterLeagues :: Text -> RiotT LeagueList
@@ -253,6 +255,12 @@ getProfileIcons = do
   locale  <- getLocale
   version <- versionToUse
   request $ GET_PROFILE_ICONS version locale
+
+getRunes :: RiotT [RuneTree]
+getRunes = do
+  locale  <- getLocale
+  version <- versionToUse
+  request $ GET_RUNES version locale
 
 -- Utils
 

@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: fb9c405f0e1010d19738e43c733a097702e89096a04a360fb0eb8746b803885d
+-- hash: d117ba13b2d454a6d3e75880c8568a6fb4097058e7ea27583dfb02e180f4b267
 
 name:           riot
 version:        0.1.0.0
@@ -82,6 +82,9 @@ library
       Web.Riot.LOL.Static.Items.Item
       Web.Riot.LOL.Static.ProfileIcons
       Web.Riot.LOL.Static.Queue
+      Web.Riot.LOL.Static.Runes.Rune
+      Web.Riot.LOL.Static.Runes.Runes
+      Web.Riot.LOL.Static.Runes.RuneTree
       Web.Riot.LOL.Static.Season
       Web.Riot.LOL.Static.Spell
       Web.Riot.LOL.Summoner

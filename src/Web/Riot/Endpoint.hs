@@ -70,6 +70,7 @@ data Endpoint
   | GET_ITEMS                     Text Locale
   | GET_SUMMONERS                 Text Locale
   | GET_PROFILE_ICONS             Text Locale
+  | GET_RUNES                     Text Locale
 
 endpointToUrlAndOptions :: Endpoint -> Text -> Platform -> (Text, Options)
 endpointToUrlAndOptions endpoint apikey platform = case endpoint of
@@ -254,6 +255,10 @@ endpointToUrlAndOptions endpoint apikey platform = case endpoint of
     )
   (GET_PROFILE_ICONS version locale) ->
     ( concat [cdn, "/cdn/", version, "/data/", pack $ show locale, "/profileicon.json"]
+    , defaults
+    )
+  (GET_RUNES version locale) ->
+    ( concat [cdn, "/cdn/", version, "/data/", pack $ show locale, "/runesReforged.json"]
     , defaults
     )
   where withKey = defaults & header "X-Riot-Token" .~ [encodeUtf8 apikey]
