@@ -33,7 +33,7 @@ request endpoint = throttle $ do
       setError $ handleHttpException error
     Right response -> case eitherDecode $ response ^. Wreq.responseBody of
       Left message -> do
-        loggit $ Loggit url time "Failed to parse request." options
+        loggit $ Loggit url time (append "Failed to parse request. " (pack message)) options
         setError $ UnableToParse $ pack message
       Right value -> do
         loggit $ Loggit url time "Success." options
