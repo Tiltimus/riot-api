@@ -14,7 +14,7 @@ import           Web.Riot.LOL.Static.Champions.Info
 import           Web.Riot.LOL.Static.Champions.ChampionStats
 import           Web.Riot.LOL.Static.Champions.Passive
 import           Web.Riot.LOL.Static.Champions.Skin
-import           Web.Riot.LOL.Static.Spell
+import           Web.Riot.LOL.Static.Champions.ChampionSpell
 
 data Champion
     = Champion
@@ -33,7 +33,7 @@ data Champion
     , lore      :: Maybe Text
     , allytips  :: Maybe [Text]
     , enemytips :: Maybe [Text]
-    , spells    :: Maybe [Spell]
+    , spells    :: Maybe [ChampionSpell]
     , passive   :: Maybe Passive
     } deriving (Show, Generic)
 

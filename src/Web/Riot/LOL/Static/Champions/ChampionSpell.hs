@@ -4,7 +4,7 @@
 {-# LANGUAGE ScopedTypeVariables   #-}
 {-# LANGUAGE DuplicateRecordFields #-}
 
-module Web.Riot.LOL.Static.Spell where
+module Web.Riot.LOL.Static.Champions.ChampionSpell where
 
 import           GHC.Generics
 import           Data.Aeson
@@ -12,8 +12,8 @@ import           Data.Text
 import           Data.Map
 import           Web.Riot.LOL.Static.Image
 
-data Spell
-    = Spell
+data ChampionSpell
+    = ChampionSpell
     { id           :: Text
     , name         :: Text
     , description  :: Text
@@ -22,13 +22,12 @@ data Spell
     , cooldown     :: [Int]
     , cooldownBurn :: Text
     , cost         :: [Int]
-    , key          :: Text
     , image        :: Image
     }
     deriving (Show, Eq, Generic)
 
-instance FromJSON Spell where
-  parseJSON = withObject "spell" $ \o -> do
+instance FromJSON ChampionSpell where
+  parseJSON = withObject "championSpell" $ \o -> do
     id           <- o .: "id"
     name         <- o .: "name"
     description  <- o .: "description"
@@ -37,12 +36,11 @@ instance FromJSON Spell where
     cooldown     <- o .: "cooldown"
     cooldownBurn <- o .: "cooldownBurn"
     cost         <- o .: "cost"
-    key          <- o .: "key"
     image        <- o .: "image"
-    return Spell { .. }
+    return ChampionSpell { .. }
 
-instance ToJSON Spell where
-  toJSON Spell {..} = object
+instance ToJSON ChampionSpell where
+  toJSON ChampionSpell {..} = object
     [ "id"           .= id
     , "name"         .= name
     , "description"  .= description
@@ -51,27 +49,5 @@ instance ToJSON Spell where
     , "cooldown"     .= cooldown
     , "cooldownBurn" .= cooldownBurn
     , "cost"         .= cost
-    , "key"          .= key
     , "image"        .= image
-    ]
-
-data Spells 
-    = Spells
-    { stype   :: Text
-    , version :: Text
-    , sdata   :: Map Text Spell
-    } deriving (Show, Eq, Generic) 
-
-instance FromJSON Spells where
-  parseJSON = withObject "spells" $ \o -> do
-    stype    <- o .: "type"
-    version <- o .: "version"
-    sdata    <- o .: "data"
-    return Spells { .. }
-
-instance ToJSON Spells where
-  toJSON Spells {..} = object
-    [ "type"    .= stype
-    , "version" .= version
-    , "data"    .= sdata
     ]

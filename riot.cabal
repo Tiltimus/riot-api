@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: d117ba13b2d454a6d3e75880c8568a6fb4097058e7ea27583dfb02e180f4b267
+-- hash: 1bb99536af465d916ac6f33bd346b33427bca70c80d194b2ffacc18beac2958a
 
 name:           riot
 version:        0.1.0.0
@@ -70,6 +70,7 @@ library
       Web.Riot.LOL.Static
       Web.Riot.LOL.Static.Champions
       Web.Riot.LOL.Static.Champions.Champion
+      Web.Riot.LOL.Static.Champions.ChampionSpell
       Web.Riot.LOL.Static.Champions.ChampionStats
       Web.Riot.LOL.Static.Champions.Info
       Web.Riot.LOL.Static.Champions.Passive
