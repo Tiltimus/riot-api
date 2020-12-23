@@ -18,7 +18,7 @@ data Player = Player
   , accountId         :: Text
   , summonerName      :: Text
   , platformId        :: Text
-  , summonerId        :: Text
+  , summonerId        :: Maybe Text
   , currentPlatformId :: Text
   }
   deriving (Show, Eq, Generic)
@@ -39,7 +39,7 @@ instance FromJSON Player where
       <*> v
       .:  "platformId"
       <*> v
-      .:  "summonerId"
+      .:? "summonerId"
       <*> v
       .:  "currentPlatformId"
 
