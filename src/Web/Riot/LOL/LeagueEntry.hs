@@ -9,6 +9,8 @@ module Web.Riot.LOL.LeagueEntry where
 import           Data.Text
 import           Data.Aeson
 import           GHC.Generics
+import           Web.Riot.LOL.Tier
+import           Web.Riot.LOL.QueueType
 
 type LeagueEntries = [LeagueEntry]
 
@@ -40,9 +42,9 @@ instance ToJSON MiniSeries where
 data LeagueEntry
     = LeagueEntry
     { id           :: Maybe Text
-    , queueType    :: Maybe Text
-    , tier         :: Maybe Text
-    , rank         :: Text
+    , queueType    :: Maybe QueueType
+    , tier         :: Maybe Tier
+    , rank         :: Division
     , summonerId   :: Text
     , summonerName :: Text
     , leaguePoints :: Int
@@ -60,16 +62,16 @@ instance FromJSON LeagueEntry where
     id           <- o .:? "leagueId"
     queueType    <- o .:? "queueType"
     tier         <- o .:? "tier"
-    rank         <- o .:  "rank"
-    summonerId   <- o .:  "summonerId"
-    summonerName <- o .:  "summonerName"
-    leaguePoints <- o .:  "leaguePoints"
-    wins         <- o .:  "wins"
-    losses       <- o .:  "losses"
-    veteran      <- o .:  "veteran"
-    inactive     <- o .:  "inactive"
-    freshBlood   <- o .:  "freshBlood"
-    hotStreak    <- o .:  "hotStreak"
+    rank         <- o .: "rank"
+    summonerId   <- o .: "summonerId"
+    summonerName <- o .: "summonerName"
+    leaguePoints <- o .: "leaguePoints"
+    wins         <- o .: "wins"
+    losses       <- o .: "losses"
+    veteran      <- o .: "veteran"
+    inactive     <- o .: "inactive"
+    freshBlood   <- o .: "freshBlood"
+    hotStreak    <- o .: "hotStreak"
     miniSeries   <- o .:? "miniSeries"
     return LeagueEntry { .. }
 
